@@ -1,0 +1,26 @@
+COVER LETTER
+As I could uderstand the main idea of PoW protection is that some stuff is difficult for client to calculate
+and easy for server to check if he had done big calculations.
+
+So as for me for server if we allow any service connect to our server
+for the first request to server we should give client a "word" and a difficulty - he will take it,
+make lot of hash creations(calculation) and find the first "digit" to add to the word to get the right hash(according to difficulty)
+
+Then he make another request with giving server this "digit" and server just make one attempt to check if the "digit" is right with creating hash and comparing it with difficulty conditions and decide to start process further data for this client or not
+
+I we want only our services to get data from the server we "hardcode" a word and a difficulty (like contract for every our service) we could just wait a client with a calculated "digit" and make a discision if its yeap or not
+
+There is soooo small chance that "bad" client come to the server with random "digit" and it will be right - so we could not think of it. The most common variant is that he will try his luck but the "digit" wont be right and we will ban him
+
+TECHNICAL
+I ve done 2 variants
+
+First is just a two files that should be started in a 2 terminals - they are working fine
+you get the result - hardcoded word is "naruto" and difficulty is 4 - so for this stuff nonce is 51183 - so if you enter it you will get randon quote and get the message that everything is ok. Fuction to calculate the nonce in client.go
+
+if it was another nonce in input - server show the message that it isn not ok (here we could break the connection and ban the client)
+
+
+Second is a docker-compose project with 2 containers when they start client connect to the server among containers and exchange messages, but I could not enter any message in this console - maybe its connect with the way of reading etc - but still getting data from console is a training task and I decided that i could left it.
+
+P.S please let me know what was wrong with the task - need your feedback thanks
